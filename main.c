@@ -29,22 +29,14 @@ int main(void)
 {
     int i;
     char * name = "Your Name\0";
-
-    printf("Hello %s, ", name);
-
-    // removing spaces, printing forward
-    // using sprintf when written as a function
-    for (i = 0; i < strlen(name); i++) {
-      if (name[i] != ' ') printf("%c", name[i]);
-    }
-    printf(" or ");
+    char * thin = "\0";
 
     // keeping spaces, printing backwards
     // using sprintf when written as a function
-    for (i = strlen(name); i >= 0; i--) {
-      printf("%c", name[i]);
-    }
-     printf("\n");
+    printf("Hello %s, ", name);
+    removing_spaces(name);
+    printf(" or ");
+    display_backwards(name);
 
   // display the text
   // 
