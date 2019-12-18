@@ -12,7 +12,7 @@ int a = 5;
 int b = 3;
 
 // vigenere cipher key
-char keyword[]="keyword";
+char keyword[]="babacabab";
 
 
 /*
@@ -100,7 +100,112 @@ int main(void)
 
     // vigenere cipher (phrase & keyword as parameters)
     // call caesar shift for each letter when written as a function
+    printf("\nAlphabet with keyword shift\n");
+    int j = 0;
+    for (i = 0; i < strlen(alphabet); i++) {
+      printf("%c", alphabet[i]);
+
+      char *pos = strchr (alphabet, keyword[ j++ ]);
+      int shift = pos ? pos - alphabet : -1;
+      
+      printf(" -> %c, ",alphabet[((i + shift) % 26)]);
+      if (j == strlen(keyword)) j = 0;
+    }
+    printf("\n");
 
     return 0;
 } 
 
+char * remove_spaces(char * phrase){
+    // removing spaces, printing forward
+    // using sprintf when written as a function
+    char * ret;
+    for (int i = 0; i < strlen(phrase); i++) {
+      if (phrase[i] != ' ') sprintf(ret, "%c", phrase[i]);
+    }
+    return * ret;  
+}
+
+
+int removing_spaces(char name[]){
+    // removing spaces, printing forward
+    for (int i = 0; i < strlen(name); i++) {
+      if (name[i] != ' ') printf("%c", name[i]);
+    }
+    printf(" or ");
+    return 0;
+}
+
+int display_backwards(char name[]){
+    // keeping spaces, printing backwards
+    for (int i = strlen(name); i >= 0; i--) {
+      printf("%c", name[i]);
+    }
+     printf("\n");
+     return 0;
+}
+
+int * keyword_shifts(char keyword[], char alphabet[]){
+    // converting keyword to alphabetic indexes
+    // for shifting each message letter with the 
+    // caesar cipher
+    int * ret;
+    printf("Vigenare shifts are: ");
+    for (int i = 0; i < strlen(keyword); i++) {
+      char *pos = strchr (alphabet, keyword[i]);
+      int position = pos ? pos - alphabet : -1;
+      printf("%d ", position);
+    }
+     printf("\n");
+     return ret;
+}
+
+int display_plaintext(char cyphertext[]){
+ 
+
+  printf("\nThe cypher challenge text is :\n");
+  for (int i = 0; i < strlen(cyphertext); i++){
+    if (i%30 == 0) printf("\n");
+    printf("%c", cyphertext[i]);
+  }
+  return 0;
+}
+
+int display_shifted_alphabet(char alphabet[], int shift){
+  
+
+    printf("\nAlphabet with a Caesar shift\n");
+    for (int i = 0; i < strlen(alphabet); i++) {
+      printf("%c", alphabet[i]);
+      printf(" -> %c, ",alphabet[((i + shift) % 26)]);
+    }
+    printf("\n");
+    return 0;
+}
+
+int display_affine_alphabet(char alphabet[], int a, int b){
+  
+    printf("\nAlphabet with an affine shift\n");
+    for (int i = 0; i < strlen(alphabet); i++) {
+      printf("%c", alphabet[i]);
+      printf(" -> %c, ",alphabet[((a*i + b) % 26)]);
+    }
+    printf("\n");
+    return 0;
+}
+
+int display_keyword_alphabet(char alphabet[], char keyword[]){
+    printf("\nAlphabet with keyword shift\n");
+    int j = 0;
+    for (int i = 0; i < strlen(alphabet); i++) {
+      printf("%c", alphabet[i]);
+
+      char *pos = strchr (alphabet, keyword[ j++ ]);
+      int shift = pos ? pos - alphabet : -1;
+      
+      printf(" -> %c, ",alphabet[((i + shift) % 26)]);
+      if (j == strlen(keyword)) j = 0;
+    }
+    printf("\n");
+    return 0;
+}
