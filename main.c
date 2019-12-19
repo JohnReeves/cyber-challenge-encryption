@@ -154,7 +154,6 @@ int * keyword_shifts(char keyword[], char alphabet[]){
 
 int display_plaintext(char cyphertext[]){
  
-
   printf("\nThe cypher challenge text is :\n");
   for (int i = 0; i < strlen(cyphertext); i++){
     if (i%30 == 0) printf("\n");
@@ -165,7 +164,6 @@ int display_plaintext(char cyphertext[]){
 
 int display_shifted_alphabet(char alphabet[], int shift){
   
-
     printf("\nAlphabet with a Caesar shift\n");
     for (int i = 0; i < strlen(alphabet); i++) {
       printf("%c", alphabet[i]);
